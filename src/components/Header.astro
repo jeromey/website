@@ -1,25 +1,35 @@
 ---
-import HeaderLink from './HeaderLink.astro';
-import { SITE_TITLE } from '../consts';
+import HeaderLink from "./HeaderLink.astro";
+import { SITE_TITLE } from "../consts";
 ---
 
 <header>
-	<h2>
+	<h1>
 		{SITE_TITLE}
-	</h2>
+	</h1>
 	<nav>
 		<HeaderLink href="/">Home</HeaderLink>
-		<HeaderLink href="/blog">Blog</HeaderLink>
 		<HeaderLink href="/about">About</HeaderLink>
-		<HeaderLink href="https://twitter.com/astrodotbuild" target="_blank">Twitter</HeaderLink>
-		<HeaderLink href="https://github.com/withastro/astro" target="_blank">GitHub</HeaderLink>
+		<HeaderLink href="/bookmarked">Bookmarked</HeaderLink>
+		<HeaderLink href="/today-i-learned">Today I learned</HeaderLink>
 	</nav>
 </header>
 <style>
 	header {
-		margin: 0em 0 2em;
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		margin-bottom: 64px;
 	}
-	h2 {
-		margin: 0.5em 0;
+	header h1 {
+		color: var(--medium-green);
+	}
+
+	header a {
+		text-decoration: none;
+	}
+	
+	nav {
+		display: flex;
 	}
 </style>

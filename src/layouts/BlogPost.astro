@@ -1,39 +1,84 @@
 ---
-import type { CollectionEntry } from 'astro:content';
-import BaseHead from '../components/BaseHead.astro';
-import Header from '../components/Header.astro';
-import Footer from '../components/Footer.astro';
-import FormattedDate from '../components/FormattedDate.astro';
+import type { CollectionEntry } from "astro:content";
+import BaseHead from "../components/BaseHead.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import FormattedDate from "../components/FormattedDate.astro";
 
-type Props = CollectionEntry<'blog'>['data'];
+type Props = CollectionEntry<"blog">["data"];
 
-const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
+const { title, description, pubDate, updatedDate, heroImage, hero } = Astro.props;
 ---
 
 <html lang="en">
 	<head>
 		<BaseHead title={title} description={description} />
 		<style>
-			.title {
-				font-size: 2em;
-				margin: 0.25em 0 0;
-			}
-			hr {
-				border-top: 1px solid #ddd;
-				margin: 1rem 0;
-			}
 			.last-updated-on {
 				font-style: italic;
 			}
+
+			img.hero {
+				margin-right: -48px;
+				float: right;
+				height: 800px;
+				/* width: 35%; */
+				shape-margin: 8px;
+				/* border: solid red 1px; */
+			}
 		</style>
+
+		<style is:global>
+			.tiktoks {
+				display: flex;
+			}
+			.tiktoks > * {
+				border: none;
+			}
+			main h1 {
+				font-size: 4em;
+				font-weight: 100;
+				margin-top: 48px;
+				margin-bottom: 32px;
+			}
+
+			main h2 {
+				font-size: 2em;
+				font-weight: 200;
+				margin-top: 48px;
+				margin-bottom: 32px;
+			}
+
+			article p {
+				margin-top: 16px;
+				margin-bottom: 16px;
+			}
+
+			main a {
+				color: var(--medium-green);
+			}
+		</style>
+
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,300&display=swap"
+			rel="stylesheet"
+		/>
 	</head>
 
 	<body>
 		<Header />
 		<main>
 			<article>
-				{heroImage && <img width={720} height={360} src={heroImage} alt="" />}
-				<h1 class="title">{title}</h1>
+				<img
+					class="hero"
+					src={heroImage}
+					alt=""
+					style={`shape-outside: url(${heroImage});`}
+				/>
+
+				<h1 class="title">{title}: {description}</h1>
 				<FormattedDate date={pubDate} />
 				{
 					updatedDate && (
@@ -42,7 +87,6 @@ const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
 						</div>
 					)
 				}
-				<hr />
 				<slot />
 			</article>
 		</main>

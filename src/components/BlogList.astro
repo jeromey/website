@@ -1,0 +1,77 @@
+---
+import FormattedDate from "../components/FormattedDate.astro";
+const { posts } = Astro.props;
+---
+
+<style>
+    ul {
+        /* border: solid red 1px; */
+        display: flex;
+        /* flex-wrap: wrap; */
+        gap: 20px;
+        justify-content: space-between;
+        flex-wrap: wrap;
+    }
+    li {
+        list-style: none;
+        /* border: solid green 1px; */
+        display: inline-block;
+        /* width: 30%;
+     flex-grow: 1;
+    flex-shrink: 0; */
+        flex: 1 0 40%;
+        max-width: calc((100% - 40px) / 2);
+        box-shadow: 3px 3px 8px RGBA(39, 64, 41, 0.09);
+        border-radius: 16px;
+        padding: 16px;
+        padding-right: 0;
+        padding-bottom: 0;
+    }
+
+    li a {
+        text-decoration: none;
+        clear: both;
+    }
+
+    li a h3 {
+        font-weight: 400;
+        margin-bottom: 32px;
+        color: #232f27;
+        font-size: 1.5em;
+        margin-right: 16px;
+    }
+
+    .hero-small-card {
+        float: right;
+    }
+</style>
+<ul>
+    {
+        posts.map((post) => (
+            // <li>
+            //     <FormattedDate date={post.data.pubDate} />
+            //     <a href={`/blog/${post.slug}/`}>{post.data.title}</a>
+            // </li>
+            <li class="blog-post-card">
+                {post.data.hero && (
+                    <img
+                        class="hero-small-card"
+                        src={post.data.hero}
+                        alt="photo of an Alocasia Frydek"
+                        style={`shape-outside: url('${post.data.hero}'); width: 200px; height: auto;"`}
+                    />
+                )}
+                <a href={`/blog/${post.slug}`}>
+                    <h3>
+                        {post.data.title}: {post.data.description}
+                    </h3>
+                </a>
+
+                <p>{post.data.intro}</p>
+                <p>
+                    <a href={post.url}>read more</a>
+                </p>
+            </li>
+        ))
+    }
+</ul>
