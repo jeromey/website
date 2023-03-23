@@ -5,6 +5,7 @@ import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 import { getCollection } from 'astro:content';
+import LatestSocials from '../components/LatestSocials.astro';
 const posts = (await getCollection('blog')).sort(
 	(a, b) => a.data.pubDate.valueOf() - b.data.pubDate.valueOf()
 );
@@ -19,6 +20,8 @@ const posts = (await getCollection('blog')).sort(
 		<Header title={SITE_TITLE} />
 		<main>
 			<BlogList posts={posts} />
+
+			<LatestSocials />
 			<!-- <h1>🧑‍🚀 Hello, Astronaut!</h1>
 			<p>
 				Welcome to the official <a href="https://astro.build/">Astro</a> blog starter template. This

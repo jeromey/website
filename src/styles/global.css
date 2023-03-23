@@ -73,3 +73,26 @@ blockquote {
 	margin: 0px;
 	font-style: italic;
 }
+
+main h1 {
+	font-size: 4em;
+	font-weight: 100;
+	margin-top: 48px;
+	margin-bottom: 32px;
+}
+
+main h2 {
+	font-size: 2em;
+	font-weight: 200;
+	margin-top: 48px;
+	margin-bottom: 32px;
+}
+
+article p {
+	margin-top: 16px;
+	margin-bottom: 16px;
+}
+
+main a {
+	color: var(--medium-green);
+}

@@ -6,8 +6,6 @@ heroImage: "/img/hero-grow-lights.png"
 hero: "/img/hero-grow-lights.png"
 intro: Looking to improve your indoor plant care? Check out our comprehensive guide to using grow lights! Learn what grow lights are, why you should use them, and what kinds are available, including the most popular LED grow lights. Discover how to measure the efficacy of a grow light using LUX and PAR, and how long to leave grow lights on for optimal plant growth. Whether you're a seasoned indoor gardener or just starting out, our guide will help you make the most of your indoor plant care.
 ---
-{ intro }
-
 ## What are grow lights?
 Grow lights are artificial lighting systems that are designed to mimic the natural sunlight that plants need to grow and thrive. These lights emit wavelengths of light that are essential for plant growth, including blue, red, and green light. Grow lights are commonly used for indoor gardening and can be a great solution for those who want to grow plants indoors or in spaces with limited access to natural light.
 

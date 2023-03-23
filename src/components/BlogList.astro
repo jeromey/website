@@ -26,7 +26,7 @@ const { posts } = Astro.props;
         border: solid 1px RGBA(39, 64, 41, 0.05);
         padding: 16px;
         padding-right: 0;
-        padding-bottom: 0;
+        padding-bottom: 16px;
         overflow: clip;
     }
 
@@ -36,7 +36,7 @@ const { posts } = Astro.props;
     }
 
     li a h3 {
-        font-weight: 400;
+        font-weight: 200;
         margin-bottom: 32px;
         color: #232f27;
         font-size: 1.5em;
@@ -46,7 +46,13 @@ const { posts } = Astro.props;
     .hero-small-card {
         float: right;
     }
+
+    .read-more {
+        padding-top: 16px;
+        display: inline-block;
+    }
 </style>
+<h2>Latest posts</h2>
 <ul>
     {
         posts.map((post) => (
@@ -70,9 +76,10 @@ const { posts } = Astro.props;
                 </a>
 
                 <p>{post.data.intro}</p>
-                <p>
-                    <a href={post.url}>read more</a>
-                </p>
+
+                <a class="read-more" href={`/blog/${post.slug}`}>
+                    read more
+                </a>
             </li>
         ))
     }
