@@ -4,87 +4,91 @@ const { posts } = Astro.props;
 ---
 
 <style>
+  ul {
+    /* border: solid red 1px; */
+    display: flex;
+    /* flex-wrap: wrap; */
+    gap: 20px;
+    justify-content: space-between;
+    flex-wrap: wrap;
+  }
+  li {
+    list-style: none;
+    /* border: solid green 1px; */
+    display: inline-block;
+    flex: 1 0 40%;
+    max-width: calc((100% - 40px) / 2);
+    box-shadow: 3px 3px 8px RGBA(39, 64, 41, 0.09);
+    border-radius: 16px;
+    border: solid 1px RGBA(39, 64, 41, 0.05);
+    padding: 16px;
+    padding-right: 0;
+    padding-bottom: 16px;
+    overflow: clip;
+  }
+
+  li a {
+    text-decoration: none;
+    clear: both;
+  }
+
+  li a h3 {
+    font-weight: 200;
+    margin-bottom: 32px;
+    color: #232f27;
+    font-size: 1.5em;
+    margin-right: 16px;
+  }
+
+  .hero-small-card {
+    float: right;
+  }
+
+  .read-more {
+    padding-top: 16px;
+    display: inline-block;
+  }
+
+  @media (max-width: 640px) {
     ul {
-        /* border: solid red 1px; */
-        display: flex;
-        /* flex-wrap: wrap; */
-        gap: 20px;
-        justify-content: space-between;
-        flex-wrap: wrap;
+      flex-direction: column;
     }
+
     li {
-        list-style: none;
-        /* border: solid green 1px; */
-        display: inline-block;
-        flex: 1 0 40%;
-        max-width: calc((100% - 40px) / 2);
-        box-shadow: 3px 3px 8px RGBA(39, 64, 41, 0.09);
-        border-radius: 16px;
-        border: solid 1px RGBA(39, 64, 41, 0.05);
-        padding: 16px;
-        padding-right: 0;
-        padding-bottom: 16px;
-        overflow: clip;
-    }
-
-    li a {
-        text-decoration: none;
-        clear: both;
-    }
-
-    li a h3 {
-        font-weight: 200;
-        margin-bottom: 32px;
-        color: #232f27;
-        font-size: 1.5em;
-        margin-right: 16px;
+      /* width: 100%; */
+      max-width: none;
     }
 
     .hero-small-card {
-        float: right;
+      margin-right: -16px;
     }
-
-    .read-more {
-        padding-top: 16px;
-        display: inline-block;
-    }
-
-    @media (max-width: 640px) {
-        ul {
-            flex-direction: column;
-        }
-
-        li {
-            /* width: 100%; */
-            max-width: none;
-        }
-    }
+  }
 </style>
 <h2>Latest posts</h2>
 <ul>
-    {
-        posts.map((post) => (
-            <li class="blog-post-card">
-                {post.data.hero && (
-                    <img
-                        class="hero-small-card"
-                        src={post.data.hero}
-                        alt="photo of an Alocasia Frydek"
-                        style={`shape-outside: url('${post.data.hero}'); width: 200px; height: auto;"`}
-                    />
-                )}
-                <a href={`/blog/${post.slug}`}>
-                    <h3>
-                        {post.data.title}: {post.data.description}
-                    </h3>
-                </a>
+  {
+    posts.map((post) => (
+      <li class="blog-post-card">
+        {post.data.hero && (
+          <img
+            class="hero-small-card"
+            src={post.data.hero}
+            alt="photo of an Alocasia Frydek"
+            style={`shape-outside: url('${post.data.hero}'); width: 200px; height: auto;"`}
+          />
+        )}
+        <a href={`/blog/${post.slug}`}>
+          <h3>
+            {post.data.title}: {post.data.description}
+          </h3>
+        </a>
 
-                <p>{post.data.intro}</p>
+        <p>{post.data.intro}</p>
 
-                <a class="read-more" href={`/blog/${post.slug}`}>
-                    read more
-                </a>
-            </li>
-        ))
-    }
+        <a class="read-more" href={`/blog/${post.slug}`}>
+          read more
+        </a>
+      </li>
+    ))
+  }
 </ul>
