@@ -16,9 +16,6 @@ const { posts } = Astro.props;
         list-style: none;
         /* border: solid green 1px; */
         display: inline-block;
-        /* width: 30%;
-     flex-grow: 1;
-    flex-shrink: 0; */
         flex: 1 0 40%;
         max-width: calc((100% - 40px) / 2);
         box-shadow: 3px 3px 8px RGBA(39, 64, 41, 0.09);
@@ -51,15 +48,22 @@ const { posts } = Astro.props;
         padding-top: 16px;
         display: inline-block;
     }
+
+    @media (max-width: 640px) {
+        ul {
+            flex-direction: column;
+        }
+
+        li {
+            /* width: 100%; */
+            max-width: none;
+        }
+    }
 </style>
 <h2>Latest posts</h2>
 <ul>
     {
         posts.map((post) => (
-            // <li>
-            //     <FormattedDate date={post.data.pubDate} />
-            //     <a href={`/blog/${post.slug}/`}>{post.data.title}</a>
-            // </li>
             <li class="blog-post-card">
                 {post.data.hero && (
                     <img
