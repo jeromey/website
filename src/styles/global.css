@@ -95,3 +95,9 @@ article p {
 main a {
 	color: var(--medium-green);
 }
+
+@media (max-width: 640px) {
+	body {
+		margin: 16px;
+	}
+}
