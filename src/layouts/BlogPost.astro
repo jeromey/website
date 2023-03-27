@@ -71,7 +71,7 @@ const { title, description, pubDate, updatedDate, heroImage, hero } = Astro.prop
 					style={`shape-outside: url(${heroImage});`}
 				/>
 
-				<h1 class="title">{title}: {description}</h1>
+				<h1 class="title">{title} {description && `: ${description}`}</h1>
 				<FormattedDate date={pubDate} />
 				{
 					updatedDate && (
