@@ -13,6 +13,9 @@ import { SITE_TITLE } from "../consts";
 		<HeaderLink href="/bookmarked">Plants</HeaderLink>
 		<HeaderLink href="/today-i-learned">Tech</HeaderLink>
 	</nav>
+	<div id="menu-icon-wrapper">
+		<img id="menu-icon" src="/img/menu.svg" width="24" height="24" />
+	</div>
 </header>
 <style>
 	header {
@@ -28,8 +31,67 @@ import { SITE_TITLE } from "../consts";
 	header a {
 		text-decoration: none;
 	}
-	
+
 	nav {
 		display: flex;
 	}
+
+	nav :last-child {
+		padding-right: 0;
+	}
+
+	#menu-icon-wrapper {
+		display: none;
+		z-index: 1;
+	}
+
+	@media (max-width: 650px) {
+		nav {
+			height: 100%;
+			width: 75%;
+			position: absolute;
+			top: 0;
+			right: 0;
+			background-color: var(--medium-green);
+			flex-direction: column;
+			transform: translateX(100%);
+			padding-top: 36px;
+		}
+
+		nav a {
+			color: var(--almost-white);
+		}
+
+		#menu-icon-wrapper {
+			display: inline-block;
+			width: 24px;
+			height: 24px;
+			overflow: hidden;
+		}
+	}
 </style>
+<style is:global>
+	.navOpen {
+		transform: translateX(0);
+	}
+</style>
+
+<script>
+	const closeImage = new Image(24, 24);
+	closeImage.src = "/img/close.svg";
+	let isOpen = false;
+
+	const menuIcon = document.querySelector("#menu-icon");
+	const nav = document.querySelector('nav')
+	menuIcon?.addEventListener("click", () => {
+		isOpen = !isOpen;
+		if (isOpen) {
+			menuIcon.src = closeImage.src;
+			nav?.classList.add('navOpen');
+
+		} else {
+			menuIcon.src = "/img/menu.svg";
+			nav?.classList.toggle('navOpen');
+		}
+	});
+</script>
