@@ -3,25 +3,60 @@ import type { HTMLAttributes } from "astro/types";
 
 type Props = HTMLAttributes<"a">;
 
-const { href, class: className, ...props } = Astro.props;
+const { href, class: className, icon, ...props } = Astro.props;
 
 const { pathname } = Astro.url;
-const isActive = href === pathname || href === pathname.replace(/\/$/, "");
+const isActive = href === pathname	 || href === pathname.replace(/\/$/, "");
 ---
 
 <a href={href} class:list={[className, { active: isActive }]} {...props}>
 	<slot />
+	<div><img src={`/icons/${icon}.svg`} width="24" height="24" color="white" /></div>
 </a>
 <style>
 	* {
-		--dark-green: #232F27;
+		--dark-green: #232f27;
 	}
 	a {
 		text-decoration: none;
 		color: var(--dark-green);
 		padding: 20px;
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
 	}
 	a.active {
 		font-weight: bolder;
+	}
+	a img {
+		display: none;
+		color: white;
+	}
+
+	nav {
+		background: linear-gradient();
+	}
+
+	@media (max-width: 650px) {
+		a {
+			padding: 8px;
+			padding-right: 4px;
+		}
+
+		a img {
+			display: block;
+		}
+
+		a div {
+			margin-left: 8px;
+			border-radius: 50%;
+			background-color: var(--medium-green);
+			width: 48px;
+			height: 48px;
+			/* color: white; */
+			display: flex;
+			justify-content: center;
+			align-items: center;
+		}
 	}
 </style>

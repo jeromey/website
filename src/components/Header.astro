@@ -8,10 +8,10 @@ import { SITE_TITLE } from "../consts";
 		{SITE_TITLE}
 	</h1>
 	<nav>
-		<HeaderLink href="/">Home</HeaderLink>
-		<HeaderLink href="/about">About</HeaderLink>
-		<HeaderLink href="/bookmarked">Plants</HeaderLink>
-		<HeaderLink href="/today-i-learned">Tech</HeaderLink>
+		<HeaderLink href="/" icon="house">Home</HeaderLink>
+		<HeaderLink href="/about" icon="user">About</HeaderLink>
+		<HeaderLink href="/bookmarked" icon="leaf">Plants</HeaderLink>
+		<HeaderLink href="/today-i-learned" icon="code">Tech</HeaderLink>
 	</nav>
 	<div id="menu-icon-wrapper">
 		<img id="menu-icon" src="/img/menu.svg" width="24" height="24" />
@@ -36,9 +36,9 @@ import { SITE_TITLE } from "../consts";
 		display: flex;
 	}
 
-	nav :last-child {
+	/* nav :last-child {
 		padding-right: 0;
-	}
+	} */
 
 	#menu-icon-wrapper {
 		display: none;
@@ -46,20 +46,24 @@ import { SITE_TITLE } from "../consts";
 	}
 
 	@media (max-width: 650px) {
+		header {
+			width: 100%;
+		}
+
 		nav {
 			height: 100%;
-			width: 75%;
 			position: absolute;
-			top: 0;
+			top: 24px;
 			right: 0;
-			background-color: var(--medium-green);
+			/* background-color: var(--medium-green); */
 			flex-direction: column;
 			transform: translateX(100%);
 			padding-top: 36px;
+			display: none;
 		}
 
 		nav a {
-			color: var(--almost-white);
+			color: var(--medium-green);
 		}
 
 		#menu-icon-wrapper {
@@ -73,6 +77,7 @@ import { SITE_TITLE } from "../consts";
 <style is:global>
 	.navOpen {
 		transform: translateX(0);
+		display: block;;
 	}
 </style>
 
