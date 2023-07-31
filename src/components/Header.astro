@@ -4,7 +4,7 @@ import { SITE_TITLE } from "../consts";
 ---
 
 <header>
-	<h1>
+	<h1 id="main-header-text">
 		{SITE_TITLE}
 	</h1>
 	<nav>
@@ -20,7 +20,7 @@ import { SITE_TITLE } from "../consts";
 <style>
 	header {
 		display: flex;
-		justify-content: space-between;
+		justify-content: flex-end;
 		align-items: center;
 		margin-bottom: 64px;
 	}
@@ -34,6 +34,12 @@ import { SITE_TITLE } from "../consts";
 
 	nav {
 		display: flex;
+	}
+
+	#main-header-text {
+		left: 50px;
+		position: fixed;
+		z-index: 100;
 	}
 
 	/* nav :last-child {
@@ -72,6 +78,12 @@ import { SITE_TITLE } from "../consts";
 			height: 24px;
 			overflow: hidden;
 		}
+
+		#main-header-text {
+		left: 16px;
+		position: fixed;
+		z-index: 100;
+	}
 	}
 </style>
 <style is:global>
