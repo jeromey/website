@@ -25,6 +25,12 @@ const { posts } = Astro.props;
     padding-right: 0;
     padding-bottom: 16px;
     overflow: clip;
+    transition: all 0.5s;
+  }
+
+  li:hover {
+    box-shadow: 3px 3px 8px  rgba(50, 136, 50, 0.2);
+    transform: scale(1.01) ;
   }
 
   li a {
