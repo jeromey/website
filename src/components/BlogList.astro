@@ -28,9 +28,12 @@ const { posts } = Astro.props;
     transition: all 0.5s;
   }
 
-  li:hover {
-    box-shadow: 3px 3px 8px  rgba(50, 136, 50, 0.2);
-    transform: scale(1.01) ;
+  li:hover img {
+    transform: scale(1.04); /* Adjust the scale factor as needed */
+  }
+
+  li img {
+    transition: all 0.5s;
   }
 
   li a {
